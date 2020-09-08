@@ -9,22 +9,54 @@ Pause between dots and dashes in a character – is 1 time unit long.
 Pause between characters inside a word – is 3 time units long.
 Pause between words – is 7 time units long.
 """
-__author__ = 'Tracy DeWitt, Shanquel Scott'
+__author__ = '''Tracy DeWitt,
+Shanquel Scott,
+Piero Madar,
+Mike Boring,
+README,
+CodeWars'''
 
 from morse_dict import MORSE_2_ASCII
 
 
 def decode_bits(bits):
-    # your code here
-    return
+    bits = bits.strip('0')
+    unit = min([len(element) for element in bits.split("1") +
+                bits.split("0") if element])
+    # ones_unit = len(min(list(filter(None, bits.split('0')))))
+    # zeros_unit = len(min(list(filter(None, bits.split('1')))))
+
+    # unit = min(ones_unit, zeros_unit)
+
+    print(unit)
+    morse_code = bits.replace("0000000" * unit, "   ").\
+        replace("111" * unit, "-").\
+        replace("1" * unit, ".").\
+        replace("000" * unit, " ").\
+        replace("0" * unit, "")
+    # morse_code = ''
+    # words = bits.split('0'*unit*7)
+    # for word in words:
+    #     chars = word.split('0'*unit*3)
+    #     for char in chars:
+    #         char = char.strip('0')
+    #         spaces = char.split('0'*unit)
+    #         for space in spaces:
+    #             if space == '1'*unit*3:
+    #                 morse_code += '-'
+    #             if space == '1'*unit:
+    #                 morse_code += '.'
+    #         morse_code += ' '
+    #     morse_code += '   '
+    return morse_code
 
 
 def decode_morse(morse):
-    morse_code = ""
-    for words in morse.strip().split("   "):
-        for char in words.strip().split(" "):
+    morse_code = ''
+    for words in morse.strip().split('   '):
+        for char in words.strip().split(' '):
             morse_code += MORSE_2_ASCII[char]
-        morse_code += " "
+        morse_code += ' '
     return morse_code.strip()
 
 
