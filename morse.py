@@ -12,6 +12,7 @@ Pause between words – is 7 time units long.
 __author__ = '''Tracy DeWitt,
 Shanquel Scott,
 Piero Madar,
+Mike Boring,
 README,
 CodeWars'''
 
